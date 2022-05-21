@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "664199155105",
+    "project_id": "amar-pharmacy-1",
+    "storage_bucket": "amar-pharmacy-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664199155105:android:375d75def098d6ff370fe0",
+        "android_client_info": {
+          "package_name": "com.example.amar_pharmacy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664199155105-ve0cmvessn6dj51aj4nm6qtd5qae9kte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.amar_pharmacy",
+            "certificate_hash": "6dce9a1f192fc552bfab7f07139c9cb60558a56e"
+          }
+        },
+        {
+          "client_id": "664199155105-ei4hp28sou4eqm8tb5tsdmav8rqbg1mp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7OVXqnfDN-40ETRI7VmSnOxKcI5FzmMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664199155105-ei4hp28sou4eqm8tb5tsdmav8rqbg1mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
