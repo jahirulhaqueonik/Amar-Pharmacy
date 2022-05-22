@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'home_screen.dart';
+import 'bottom_nav_controller.dart';
 
 class LoginScreen extends StatefulWidget{
   @override
@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen>{
       var authCredential = userCredential.user;
       print(authCredential!.uid);
       if(authCredential.uid.isNotEmpty){
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=>HomeScreen()));
+        Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNavController()));
       }else{
         Fluttertoast.showToast(msg: "Something is Wrong");
       }

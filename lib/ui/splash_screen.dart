@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:amar_pharmacy/ui/registration_screen.dart';
+import 'package:amar_pharmacy/ui/user_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../const/AppColors.dart';
