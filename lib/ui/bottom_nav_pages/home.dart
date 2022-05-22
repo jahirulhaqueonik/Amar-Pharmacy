@@ -20,9 +20,12 @@ class _HomeState extends State<Home> {
 
   List<String> _carouselImages = [];
   var _dotPosition = 0;
+  List _products = [];
+  var _firestoreInstance = FirebaseFirestore.instance;
+
+
   final TextEditingController _searchController = TextEditingController();
   fetchCarouselImage()async {
-    var _firestoreInstance = FirebaseFirestore.instance;
     QuerySnapshot qn = await _firestoreInstance.collection("carousel-slider").get();
     setState(() {
       for (int i = 0; i < qn.docs.length; i++) {
@@ -34,9 +37,29 @@ class _HomeState extends State<Home> {
     });
     return qn.docs;
   }
+ fetchProducts()async {
+    QuerySnapshot qn = await _firestoreInstance.collection("products").get();
+    setState(() {
+      for (int i = 0; i < qn.docs.length; i++) {
+        _products.add(
+          {
+            "product-name":qn.docs[i]["product-name"],
+            "product-description":qn.docs[i]["product-description"],
+            "price":qn.docs[i]["price"],
+            "product-img":qn.docs[i]["product-img"],
+          }
+        );
+      }
+    });
+    return qn.docs;
+  }
+
+
+
   @override
   void initState() {
     fetchCarouselImage();
+    fetchProducts();
     super.initState();
   }
 
@@ -128,7 +151,9 @@ class _HomeState extends State<Home> {
                 activeSize: Size(8,8),
                 size: Size(6,6)
               ),
-            )
+            ),
+            SizedBox(height: 10.h,),
+            ElevatedButton(onPressed: ()=>print(_products), child: Text("print products")),
 
           ],
         ),
