@@ -151,27 +151,70 @@ class _HomeState extends State<Home> {
             SizedBox(height: 10.h,),
            // ElevatedButton(onPressed: ()=>print(_products), child: Text("print products")),
             Expanded(
-                child: GridView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: _products.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 1),
-                    itemBuilder: (_,index){
-                      return Card(
-                        elevation: 3,
+              child: GridView.builder(
+                  padding: EdgeInsets.all(5),
+
+                  //physics: NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: _products.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 0.7),
+                  itemBuilder: (_,index){
+                    return GestureDetector(
+                      child: Container(
+                        margin: EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            AspectRatio(aspectRatio: 2, child: Container(color: Colors.grey,child: Image.network(_products[index]["product-img"][0],))),
-                            Text("${_products[index]["product-name"]}"),
-                            Text("${_products[index]["product-price"].toString()}"),
+                            Expanded(child: Container(
+                              width: double.infinity,
+                              alignment: Alignment.topRight,
+                              decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                      fit: BoxFit.contain,
+                                      image: NetworkImage(_products[index]["product-img"][0])
+                                  )
+                              ),
+                            )),
+                            Expanded(child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${_products[index]["product-name"]}",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    "\৳ ${_products[index]["product-price"]}",
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ))
                           ],
                         ),
-                      );
-                    }),
-                ),
+                      ),);
 
+                  }),
+            ),
           ],
         ),
-      )),
+      ),),
     );
   }
 }
