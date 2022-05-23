@@ -27,7 +27,7 @@ class _BottomNavControllerState extends State<BottomNavController> {
        items: [
          BottomNavigationBarItem(icon: Icon(Icons.home),label: ("Home"),backgroundColor: Colors.grey),
          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label:("Cart"),backgroundColor: Colors.grey),
-         BottomNavigationBarItem(icon: Icon(Icons.person),label:("Person"),backgroundColor: Colors.grey),
+         BottomNavigationBarItem(icon: Icon(Icons.person),label:("Profile"),backgroundColor: Colors.grey),
        ],
        onTap: (index){
          setState(() {

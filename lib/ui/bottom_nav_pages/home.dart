@@ -41,20 +41,16 @@ class _HomeState extends State<Home> {
     QuerySnapshot qn = await _firestoreInstance.collection("products").get();
     setState(() {
       for (int i = 0; i < qn.docs.length; i++) {
-        _products.add(
-          {
+        _products.add({
             "product-name":qn.docs[i]["product-name"],
             "product-description":qn.docs[i]["product-description"],
-            "price":qn.docs[i]["price"],
+            "product-price":qn.docs[i]["product-price"],
             "product-img":qn.docs[i]["product-img"],
-          }
-        );
+          });
       }
     });
     return qn.docs;
   }
-
-
 
   @override
   void initState() {
@@ -120,7 +116,7 @@ class _HomeState extends State<Home> {
             ),
             SizedBox(height: 10.h,),
             AspectRatio(
-              aspectRatio: 3.5,
+              aspectRatio: 2,
               child: CarouselSlider(items: _carouselImages.map((item) => Padding(
                 padding: const EdgeInsets.only(left: 3,right: 3),
                 child: Container(
@@ -129,7 +125,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               )).toList(), options: CarouselOptions(
-                autoPlay: false,
+                autoPlay: true,
                 enlargeCenterPage: true,
                 viewportFraction: 0.8,
                 enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -145,15 +141,33 @@ class _HomeState extends State<Home> {
               dotsCount: _carouselImages.isEmpty?1:_carouselImages.length,
               position: _dotPosition.toDouble(),
               decorator: DotsDecorator(
-                activeColor: Colors.orange,
-                color: Colors.orange.withOpacity(0.5),
+                activeColor: Colors.red,
+                color: Colors.red.withOpacity(0.5),
                 spacing:EdgeInsets.all(2),
                 activeSize: Size(8,8),
                 size: Size(6,6)
               ),
             ),
             SizedBox(height: 10.h,),
-            ElevatedButton(onPressed: ()=>print(_products), child: Text("print products")),
+           // ElevatedButton(onPressed: ()=>print(_products), child: Text("print products")),
+            Expanded(
+                child: GridView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: _products.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,childAspectRatio: 1),
+                    itemBuilder: (_,index){
+                      return Card(
+                        elevation: 3,
+                        child: Column(
+                          children: [
+                            AspectRatio(aspectRatio: 2, child: Container(color: Colors.grey,child: Image.network(_products[index]["product-img"][0],))),
+                            Text("${_products[index]["product-name"]}"),
+                            Text("${_products[index]["product-price"].toString()}"),
+                          ],
+                        ),
+                      );
+                    }),
+                ),
 
           ],
         ),
