@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:amar_pharmacy/ui/bottom_nav_pages/home.dart';
+import 'package:amar_pharmacy/ui/bottom_nav_pages/home/home.dart';
 import 'package:amar_pharmacy/ui/bottom_nav_pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'bottom_nav_pages/cart.dart';
@@ -25,9 +25,9 @@ class _BottomNavControllerState extends State<BottomNavController> {
        unselectedItemColor: Colors.green,
        selectedLabelStyle: TextStyle(color:Colors.black,fontWeight: FontWeight.bold),
        items: [
-         BottomNavigationBarItem(icon: Icon(Icons.home),label: ("Home"),backgroundColor: Colors.grey),
-         BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label:("Cart"),backgroundColor: Colors.grey),
-         BottomNavigationBarItem(icon: Icon(Icons.person),label:("Profile"),backgroundColor: Colors.grey),
+         BottomNavigationBarItem(icon: Icon(Icons.home),label: (""),backgroundColor: Colors.grey),
+         BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label:(""),backgroundColor: Colors.grey),
+         BottomNavigationBarItem(icon: Icon(Icons.person),label:(""),backgroundColor: Colors.grey),
        ],
        onTap: (index){
          setState(() {

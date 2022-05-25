@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../const/AppColors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'bottom_nav_controller.dart';
 import 'login_screen.dart';
 
 
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // splash_screen Timer
-    Timer(Duration(seconds: 3),()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>LoginScreen())));
+    Timer(Duration(seconds: 3),()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNavController())));
 
     super.initState();
   }
