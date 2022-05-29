@@ -1,5 +1,5 @@
 import 'package:amar_pharmacy/const/AppColors.dart';
-import 'package:amar_pharmacy/ui/registration_screen.dart';
+import 'package:amar_pharmacy/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,30 +8,31 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'bottom_nav_controller.dart';
 
-class LoginScreen extends StatefulWidget{
+class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen>{
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   bool _obscurveText = true;
 
-  signIn()async{
+  signIn() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
       var authCredential = userCredential.user;
       print(authCredential!.uid);
-      if(authCredential.uid.isNotEmpty){
-        Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNavController()));
-      }else{
+      if (authCredential.uid.isNotEmpty) {
+        Navigator.push(
+            context, CupertinoPageRoute(builder: (_) => BottomNavController()));
+      } else {
         Fluttertoast.showToast(msg: "Something is Wrong");
       }
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Fluttertoast.showToast(msg: "No user found for that email.");
@@ -52,8 +53,11 @@ class _LoginScreenState extends State<LoginScreen>{
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/amar_pharmacy.png',height: 300.h,width: 300.w,),
-
+              Image.asset(
+                'assets/images/amar_pharmacy.png',
+                height: 300.h,
+                width: 300.w,
+              ),
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.all(20.w),
@@ -62,7 +66,6 @@ class _LoginScreenState extends State<LoginScreen>{
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         //This Row FOr Email Field
                         Row(
                           children: [
@@ -81,24 +84,25 @@ class _LoginScreenState extends State<LoginScreen>{
                                 ),
                               ),
                             ),
-                            SizedBox(width: 15.w,),
+                            SizedBox(
+                              width: 15.w,
+                            ),
                             Expanded(
                                 child: TextField(
-                                  controller: _emailController,
-                                  decoration: InputDecoration(
-                                    hintText: "abc@example.com",
-                                    hintStyle: TextStyle(
-                                      fontSize: 14.sp,
-                                      color: Color(0xFF414041),
-                                    ),
-                                    labelText: 'EMAIL',
-                                    labelStyle: TextStyle(
-                                      fontSize: 15.sp,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                )
-                            ),
+                              controller: _emailController,
+                              decoration: InputDecoration(
+                                hintText: "abc@example.com",
+                                hintStyle: TextStyle(
+                                  fontSize: 14.sp,
+                                  color: Color(0xFF414041),
+                                ),
+                                labelText: 'EMAIL',
+                                labelStyle: TextStyle(
+                                  fontSize: 15.sp,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )),
                           ],
                         ),
                         SizedBox(height: 35.h),
@@ -120,12 +124,14 @@ class _LoginScreenState extends State<LoginScreen>{
                                 ),
                               ),
                             ),
-                            SizedBox(width: 15.w,),
+                            SizedBox(
+                              width: 15.w,
+                            ),
                             Expanded(
-                                child: TextField(
-                                  controller: _passwordController,
-                                  obscureText: _obscurveText,
-                                  decoration: InputDecoration(
+                              child: TextField(
+                                controller: _passwordController,
+                                obscureText: _obscurveText,
+                                decoration: InputDecoration(
                                     hintText: "password must be 6 character",
                                     hintStyle: TextStyle(
                                       fontSize: 14.sp,
@@ -139,23 +145,22 @@ class _LoginScreenState extends State<LoginScreen>{
 
                                     //Password Visibility & Not Visibility Part
                                     suffixIcon: IconButton(
-                                      icon: Icon(
-                                        _obscurveText ? Icons.visibility : Icons.visibility_off
-                                      ),
-                                      onPressed: (){
+                                      icon: Icon(_obscurveText
+                                          ? Icons.visibility
+                                          : Icons.visibility_off),
+                                      onPressed: () {
                                         setState(() {
                                           _obscurveText = !_obscurveText;
                                         });
                                       },
-                                    )
-                                  ),
-                                ),
+                                    )),
+                              ),
                             ),
                           ],
                         ),
                         SizedBox(height: 35.h),
                         //elevated Button
-                     //   customButton()
+                        //   customButton()
                         SizedBox(
                           width: 1.sw,
                           height: 56.h,
@@ -166,9 +171,7 @@ class _LoginScreenState extends State<LoginScreen>{
                             child: Text(
                               "Sign In",
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18.sp
-                              ),
+                                  color: Colors.white, fontSize: 18.sp),
                             ),
                             style: ElevatedButton.styleFrom(
                               primary: AppColors.btn_color,
@@ -195,14 +198,13 @@ class _LoginScreenState extends State<LoginScreen>{
                                 style: TextStyle(
                                     fontSize: 13.sp,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w800
-                                ),
+                                    fontWeight: FontWeight.w800),
                               ),
-                              onTap: (){
+                              onTap: () {
                                 Navigator.push(
                                     context,
                                     CupertinoPageRoute(
-                                        builder: (context)=>
+                                        builder: (context) =>
                                             RegistrationScreen()));
                               },
                             ),

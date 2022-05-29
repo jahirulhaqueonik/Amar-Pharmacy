@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:amar_pharmacy/ui/bottom_nav_pages/home/home.dart';
-import 'package:amar_pharmacy/ui/bottom_nav_pages/profile.dart';
+import 'package:amar_pharmacy/screens/bottom_nav_pages/home.dart';
+import 'package:amar_pharmacy/screens/bottom_nav_pages/profile.dart';
 import 'package:flutter/material.dart';
-import 'bottom_nav_pages/cart.dart';
+import '../screens/bottom_nav_pages/cart.dart';
 
 class BottomNavController extends StatefulWidget {
   const BottomNavController({Key? key}) : super(key: key);

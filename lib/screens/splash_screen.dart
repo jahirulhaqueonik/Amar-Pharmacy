@@ -1,14 +1,13 @@
 import 'dart:async';
-import 'package:amar_pharmacy/ui/registration_screen.dart';
-import 'package:amar_pharmacy/ui/user_form.dart';
+import 'package:amar_pharmacy/screens/registration_screen.dart';
+import 'package:amar_pharmacy/screens/user_form.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../const/AppColors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'bottom_nav_controller.dart';
+import 'bottom_nav_pages/home.dart';
 import 'login_screen.dart';
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -21,7 +20,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // splash_screen Timer
-    Timer(Duration(seconds: 3),()=>Navigator.push(context, CupertinoPageRoute(builder: (_)=>BottomNavController())));
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.push(context,
+            CupertinoPageRoute(builder: (_) => BottomNavController())));
 
     super.initState();
   }
@@ -33,21 +35,24 @@ class _SplashScreenState extends State<SplashScreen> {
       body: SafeArea(
         child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text('Amar Pharmacy',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 44.sp),
-                ),
-                SizedBox(height: 12.h,),
-                const CircularProgressIndicator(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Amar Pharmacy',
+              style: TextStyle(
                   color: Colors.white,
-                )
-              ],)
-        ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 44.sp),
+            ),
+            SizedBox(
+              height: 12.h,
+            ),
+            const CircularProgressIndicator(
+              color: Colors.white,
+            )
+          ],
+        )),
       ),
     );
   }
