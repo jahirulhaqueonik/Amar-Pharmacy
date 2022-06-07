@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class CommonUtil {
-  static const String apiUrl = 'http://118.179.72.131';
+  static const String apiUrl = 'localhost';
   static const String stripeUserCreate = "/add/user";
   static const String checkout = "/checkout";
 
